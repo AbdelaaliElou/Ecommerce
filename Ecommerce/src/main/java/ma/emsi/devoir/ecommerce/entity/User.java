@@ -25,12 +25,16 @@ public class User extends AbstractEntity {
   
     @Column(name="userName",unique=true)
 	private String userName;
+    
     @Column(name="password")
 	private String password;
+    
     @Column(name="login")
 	private String login;
+    
     @Column(name="firstName")
 	private String firstName;
+    
     @Column(name="lastName")
 	private String lastName;
 	
@@ -41,6 +45,4 @@ public class User extends AbstractEntity {
 	@JoinColumn(name="role_id")
     private Role role;
     
-
-
 }
