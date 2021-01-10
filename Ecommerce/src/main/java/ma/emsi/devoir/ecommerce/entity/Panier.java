@@ -18,7 +18,7 @@ import lombok.Setter;
 @NoArgsConstructor
 
 public class Panier extends AbstractEntity {
-
+	
 	@ManyToOne
 	@JoinColumn(name = "user_id")
 	User user;

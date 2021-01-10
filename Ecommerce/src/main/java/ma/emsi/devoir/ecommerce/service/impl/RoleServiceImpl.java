@@ -6,15 +6,16 @@ import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
 import ma.emsi.devoir.ecommerce.domaine.RoleVO;
+import ma.emsi.devoir.ecommerce.entity.Role;
 import ma.emsi.devoir.ecommerce.service.IRoleService;
 
 @Service
 public class RoleServiceImpl implements IRoleService {
 
 	@Override
-	public void saveOrUpdate(RoleVO t) {
+	public Role saveOrUpdate(RoleVO t) {
 		// TODO Auto-generated method stub
-
+		return null;
 	}
 
 	@Override

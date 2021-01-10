@@ -6,15 +6,16 @@ import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
 import ma.emsi.devoir.ecommerce.domaine.UserVO;
+import ma.emsi.devoir.ecommerce.entity.User;
 import ma.emsi.devoir.ecommerce.service.IUserService;
 
 @Service
 public class UserServiceImpl implements IUserService {
 
 	@Override
-	public void saveOrUpdate(UserVO t) {
+	public User saveOrUpdate(UserVO t) {
 		// TODO Auto-generated method stub
-
+		return null;
 	}
 
 	@Override

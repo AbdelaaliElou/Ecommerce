@@ -16,9 +16,10 @@ import lombok.Setter;;
 @NoArgsConstructor
 
 
-public class UserVO extends AbstractEntityVO {
+public class UserVO {
 
   
+    private Long id;
     
 	private String userName;
    

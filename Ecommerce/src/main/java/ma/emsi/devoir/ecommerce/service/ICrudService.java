@@ -4,9 +4,9 @@ import java.util.List;
 
 import org.springframework.data.domain.Page;
 
-public interface ICrudService<T> {
+public interface ICrudService<T,E> {
 	
-	void saveOrUpdate(T t);
+	E saveOrUpdate(T t);
 	
 	void delete(long id);
 	/**

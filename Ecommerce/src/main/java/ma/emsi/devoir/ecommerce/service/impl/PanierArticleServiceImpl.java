@@ -6,15 +6,16 @@ import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
 import ma.emsi.devoir.ecommerce.domaine.PanierArticleVO;
+import ma.emsi.devoir.ecommerce.entity.PanierArticle;
 import ma.emsi.devoir.ecommerce.service.IPanierArticleService;
 
 @Service
 public class PanierArticleServiceImpl implements IPanierArticleService {
 
 	@Override
-	public void saveOrUpdate(PanierArticleVO t) {
+	public PanierArticle saveOrUpdate(PanierArticleVO t) {
 		// TODO Auto-generated method stub
-
+		return null;
 	}
 
 	@Override

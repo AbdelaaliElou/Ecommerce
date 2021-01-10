@@ -2,6 +2,7 @@ package ma.emsi.devoir.ecommerce.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Lob;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
@@ -18,9 +19,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @Table(name="articles")
 public class Article extends AbstractEntity{
-	
-	
-	
+
 	@Column(name="reference")
 	private String reference;
 	
@@ -29,8 +28,10 @@ public class Article extends AbstractEntity{
 	
 	@Column(name="price")
 	private double price;
- 
-	
+
+	@Lob
+	@Column(name="img")
+	private String img;
 	
 
 	

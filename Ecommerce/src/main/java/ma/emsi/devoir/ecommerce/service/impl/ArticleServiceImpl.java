@@ -23,9 +23,9 @@ public class ArticleServiceImpl implements IArticleService {
 	private ArticleRepository articleRepository;
 
 	@Override
-	public void saveOrUpdate(ArticleVO articleVO) {
+	public Article saveOrUpdate(ArticleVO articleVO) {
 		
-		articleRepository.save(articleMapper.toEntity(articleVO));
+		return articleRepository.save(articleMapper.toEntity(articleVO));
 	}
 
 	@Override

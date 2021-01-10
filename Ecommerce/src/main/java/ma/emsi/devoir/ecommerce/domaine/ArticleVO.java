@@ -12,8 +12,9 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 
-public class ArticleVO extends AbstractEntityVO {
-
+public class ArticleVO {
+	
+	private Long id;
 	private String reference;
 
 	private String designation;
