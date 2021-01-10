@@ -16,7 +16,8 @@ public class EcommerceApplication {
 	ApplicationContext	applicationContext = SpringApplication.run(EcommerceApplication.class, args);
 		
 	IArticleService iArticleService= applicationContext.getBean(IArticleService.class);	
-	ArticleVO articleVO= ArticleVO.builder().reference("TestReference7").price(10).designation("TestDesignation7").build();
+	ArticleVO articleVO= ArticleVO.builder().reference("TestReference8").price(10).designation("TestDesignation8").build();
+	articleVO.setId(1l);
 	iArticleService.saveOrUpdate(articleVO);
 	ArrayList<ArticleVO> artList = (ArrayList<ArticleVO>) iArticleService.findAll();
 	artList.forEach(art -> System.err.println("Ref: "+art.getReference()+" Price: "+art.getPrice()+" Design: "+art.getDesignation()));

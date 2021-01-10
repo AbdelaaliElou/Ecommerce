@@ -24,7 +24,6 @@ public class ArticleServiceImpl implements IArticleService {
 
 	@Override
 	public void saveOrUpdate(ArticleVO articleVO) {
-		
 		articleRepository.save(articleMapper.toEntity(articleVO));
 	}
 
