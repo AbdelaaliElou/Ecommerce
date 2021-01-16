@@ -67,6 +67,7 @@ public class PanierServiceImpl implements IPanierService {
 
 	@Override
 	public void saveOrUpdate(Map<ArticleVO, Integer> mapArticles) {
+		//CRUD PanierArticle Avec Panier
 		PanierVO panierVO = new PanierVO();
 		UserVO userVo = UserVO.builder().id(1L).build();
 		panierVO.setUserVO(userVo);
