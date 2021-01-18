@@ -11,7 +11,6 @@ import ma.emsi.devoir.ecommerce.dao.PanierArticleRepository;
 import ma.emsi.devoir.ecommerce.dao.PanierRepository;
 import ma.emsi.devoir.ecommerce.domaine.ArticleVO;
 import ma.emsi.devoir.ecommerce.domaine.PanierVO;
-import ma.emsi.devoir.ecommerce.domaine.UserVO;
 import ma.emsi.devoir.ecommerce.entity.Panier;
 import ma.emsi.devoir.ecommerce.entity.PanierArticle;
 import ma.emsi.devoir.ecommerce.entity.User;
@@ -69,8 +68,8 @@ public class PanierServiceImpl implements IPanierService {
 	public void saveOrUpdate(Map<ArticleVO, Integer> mapArticles) {
 		//CRUD PanierArticle Avec Panier
 		PanierVO panierVO = new PanierVO();
-		UserVO userVo = UserVO.builder().id(1L).build();
-		panierVO.setUserVO(userVo);
+		User user = User.builder().id(1L).build();
+		panierVO.setUser(user);
 		Panier panier = saveOrUpdate(panierVO);
 		for ( Map.Entry<ArticleVO, Integer> entry: mapArticles.entrySet()) {
 			PanierArticle panierArticle = PanierArticle.builder()

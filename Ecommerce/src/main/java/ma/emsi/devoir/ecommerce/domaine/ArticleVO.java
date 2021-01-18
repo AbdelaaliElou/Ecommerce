@@ -1,5 +1,7 @@
 package ma.emsi.devoir.ecommerce.domaine;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -20,5 +22,8 @@ public class ArticleVO {
 	private String designation;
 
 	private double price;
-
+	
+	private String img;
+	
+	private MultipartFile file;
 }

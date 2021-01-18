@@ -1,8 +1,12 @@
 package ma.emsi.devoir.ecommerce.service.impl;
 
+import java.io.File;
+import java.io.IOException;
+import java.util.Base64;
 import java.util.List;
 import java.util.Optional;
 
+import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
@@ -23,8 +27,15 @@ public class ArticleServiceImpl implements IArticleService {
 	private ArticleRepository articleRepository;
 
 	@Override
-	public Article saveOrUpdate(ArticleVO articleVO) {
-		
+	public Article saveOrUpdate(ArticleVO articleVO){
+			byte[] fileContent = null;
+			try {
+				fileContent = FileUtils.readFileToByteArray((File) articleVO.getFile());
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			articleVO.setImg(Base64.getEncoder().encodeToString(fileContent));
 		return articleRepository.save(articleMapper.toEntity(articleVO));
 	}
 
@@ -35,7 +46,7 @@ public class ArticleServiceImpl implements IArticleService {
 
 	}
 	/**
-	 * @return list<<ArticleVO>
+	 * @return list<ArticleVO>
 	 * */
 	@Override
 	public List<ArticleVO> findAll() {

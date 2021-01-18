@@ -7,12 +7,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-/**
- * 
- * @author rkarami
- *
- */
-
 @Builder
 @Getter
 @Setter
@@ -21,7 +15,7 @@ import lombok.Setter;
 
 public class RoleVO extends AbstractEntityVO {
 	
-	
+	private Long id;
 	private String name;
 
 	

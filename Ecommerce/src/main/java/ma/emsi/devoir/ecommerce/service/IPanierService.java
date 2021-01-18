@@ -7,5 +7,5 @@ import ma.emsi.devoir.ecommerce.domaine.PanierVO;
 import ma.emsi.devoir.ecommerce.entity.Panier;
 
 public interface IPanierService extends ICrudService<PanierVO, Panier> {
-	void saveOrUpdate(Map<ArticleVO, Integer> mapArticles);
+	public void saveOrUpdate(Map<ArticleVO, Integer> mapArticles);
 }

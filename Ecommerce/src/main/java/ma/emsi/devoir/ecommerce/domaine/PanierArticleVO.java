@@ -5,6 +5,8 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import ma.emsi.devoir.ecommerce.entity.Article;
+import ma.emsi.devoir.ecommerce.entity.Panier;
 
 @Builder
 @Getter
@@ -12,10 +14,11 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 public class PanierArticleVO extends AbstractEntityVO {
+	
+	private Long id;
+	Panier panier;
 
-	PanierVO panierVO;
-
-	ArticleVO articleVO;
+	Article article;
 
 	int amount;
 }

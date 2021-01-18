@@ -7,6 +7,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import ma.emsi.devoir.ecommerce.entity.User;
 
 
 @Builder
@@ -17,8 +18,8 @@ import lombok.Setter;
 
 public class PanierVO extends AbstractEntityVO {
 
-	
-	UserVO userVO;
+	private Long id;
+	User user;
 
 	/*
 	 * @OneToMany java.util.List<PanierArticleVO> panierArticles;

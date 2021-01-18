@@ -7,6 +7,5 @@ import ma.emsi.devoir.ecommerce.entity.Article;
 
 
 public interface IArticleService extends ICrudService<ArticleVO,Article>{
-	
 	Page<ArticleVO> findByPriceRange(Double min, Double max);
 }

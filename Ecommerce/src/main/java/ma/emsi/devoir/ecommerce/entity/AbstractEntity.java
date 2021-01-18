@@ -19,9 +19,7 @@ import lombok.Setter;
 @Setter
 public abstract class AbstractEntity {
 	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	
 	
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date createdAt;

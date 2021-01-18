@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8">
@@ -21,14 +21,15 @@
   <div th:each="article : ${articles}" >
   <div class="col-md-3 row" style="border:4px blue;border-style: solid;margin:25px;min-height: 160px">
  <div class="col-sm-6">
-   <h5>Price  :<span th:text="${article.price}" /> </h5>
-  </br>
-  <h5>Designation :<span th:text="${article.designation}" />  </h5>
-  </br>
-  <h5>Reference :<span th:text="${article.reference}" /> </h5>
+   <h5>Price  :<span th:text="${article.price}" ></span> </h5>
+
+  <h5>Designation :<span th:text="${article.designation}"></span>  </h5>
+
+  <h5>Reference :<span th:text="${article.reference}" > </span></h5>
  </div>
  <div class="col-sm-6"></div>
-<img th:src="|data:image/png;base64,${article.img}|" alt="img"style="height: 50%;width: 50%" >
+<img th:src="|${article.img}|" alt="img"style="height: 50%;width: 50%" >
+<div><a th:href='@{/article/{id}(id=${article.id})}' class='btn'>Details</a></div>
   </div>
   </div>
   </div>

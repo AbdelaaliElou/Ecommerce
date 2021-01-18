@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import ma.emsi.devoir.ecommerce.service.IArticleService;
@@ -20,5 +21,16 @@ public class ArticleController {
 		model.addAttribute("articles", iArticleService.findAll());
 		return "article/list";
 	}
-
+	//http://localhost:8090/article/1/details
+	@GetMapping("/{id}")
+	public String findById(Model model, @PathVariable Long id) {
+		//System.out.println(id);
+		model.addAttribute("article", iArticleService.findById(id));
+		return "article/details";
+	}
+//	@GetMapping("/{id}")
+//	public String deleteById(Model model, @PathVariable Long id) {
+//		model.addAttribute("article", iArticleService.delete(id));
+//		return "article/details";
+//	}
 }

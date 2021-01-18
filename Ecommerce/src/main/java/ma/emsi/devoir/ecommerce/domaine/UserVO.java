@@ -6,7 +6,8 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;;
+import lombok.Setter;
+import ma.emsi.devoir.ecommerce.entity.Role;;
 
 
 @Builder
@@ -18,7 +19,6 @@ import lombok.Setter;;
 
 public class UserVO {
 
-  
     private Long id;
     
 	private String userName;
@@ -31,12 +31,14 @@ public class UserVO {
    
 	private String lastName;
 	
-   
 	private String email;
-	
-	
-    private RoleVO roleVO;
-    
 
+    private String cellPhone;
+    
+    private String city;
+	
+    private Role role;
+    
+    private String img;
 
 }

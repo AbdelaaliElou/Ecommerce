@@ -9,8 +9,6 @@ import lombok.Setter;
 @Setter
 public abstract class AbstractEntityVO {
 
-	private Long id;
-
 	private Date createdAt;
 
 	private Date updatedAt;
