@@ -6,19 +6,8 @@
 </head>
 <body>
 <form  th:object="${articleVO}" th:action="@{/admin/article}"
-              method="POST" enctype="multipart/form-data">
+              method="POST" th:with="">
          <table style="text-align:left;">
-            <tr>
-               <td>Code *</td>
-               <td style="color:red;">
-<!--                   <input th:field="*{id}" type="hidden" /> -->
-                  <input th:if="${articleVO.id}" type="text" />  
-<!--                   <th:block th:if="@{${articleVO.id} != null}">    -->
-<!--                        <span th:utext="${articleVO.id}"></span>    -->
-<!--                        <input type="hidden" th:field="${articleVO.id}" />                                        -->
-<!--                   </th:block>    -->
-               </td>
-            </tr>
             <tr>
                <td>reference *</td>
                <td><input th:field="${articleVO.reference}"  /></td>
@@ -30,10 +19,6 @@
             <tr>
                <td>Price *</td>
                <td><input th:field="${articleVO.price}"  /></td>
-            </tr>
-            <tr>
-               <td>Upload Image</td>
-               <td><input type="file" th:field="${articleVO.file}" /></td>
             </tr>
             <tr>
                <td>&nbsp;</td>

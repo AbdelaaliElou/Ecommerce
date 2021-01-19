@@ -1,9 +1,12 @@
 package ma.emsi.devoir.ecommerce.controllers;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,19 +17,29 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import ma.emsi.devoir.ecommerce.dao.UserRepository;
 import ma.emsi.devoir.ecommerce.domaine.ArticleVO;
-import ma.emsi.devoir.ecommerce.domaine.PanierVO;
-import ma.emsi.devoir.ecommerce.domaine.UserVO;
+import ma.emsi.devoir.ecommerce.entity.User;
 import ma.emsi.devoir.ecommerce.service.IPanierService;
-import ma.emsi.devoir.ecommerce.service.mapper.UserMapper;
 
 @Controller
 public class PanierController {
 	
 	@Autowired
 	private IPanierService panierService;
+//	@Autowired
+//	private PanierMapper panierMapper;
+//	@Autowired
+//	private UserMapper userMapper;
 	@Autowired
-	private UserMapper userMapper;
+	private UserRepository userRepository;
+//	@Autowired
+//	private PanierArticleRepository PanierArticleRepository;
+//	@Autowired
+//	private IUserService userService;
+//	@Autowired
+//	private ArticleMapper articleMapper;
+	
 	@GetMapping("/panier")
 	public String findAll(Model model) {
 		model.addAttribute("paniers", model);
@@ -47,31 +60,43 @@ public class PanierController {
 	
 	// GET: Show panier.
 	   @RequestMapping(value = { "/panier/edit" }, method = RequestMethod.GET)
-	   public String edit(Model model, @RequestParam(value = "id", defaultValue = "") Long id) {
+	   public String edit(Model model, @RequestParam(value = "id", defaultValue = "") Long id){
 		   if (id != null) {
+			   //User user = userRepository.findByUserName(auth.getName());
 			   ArticleVO articleVO = ArticleVO.builder().id(id).build();
-			   List<ArticleVO> listArtVO = (ArrayList<ArticleVO>) model.getAttribute("listArt");
-			   PanierVO panierVO = PanierVO.builder().build();//id logged user security 
-			   UserVO userVO = UserVO.builder().id(1L).build();
-			   panierVO.setUser(userMapper.toEntity(userVO));
 			   
-	         if (panierVO != null) {
-	   	      model.addAttribute("panierVO", panierVO);
-	   	      model.addAttribute("articleVO", articleVO);
-	         }
-	      }else {
-	    	  model.addAttribute("panierVO", new PanierVO());
+			   //PanierArticleVO panierArticleVO = PanierArticleVO.builder().build();
+			   //PanierVO panierVO = PanierVO.builder().build();//id logged user security 
+			   //UserVO userVO = UserVO.builder().id().build();
+			   //panierVO.setUser(user);
+			   //panierArticleVO.setPanier(panierMapper.toEntity(panierVO));
+			   //panierArticleVO.setArticle(articleMapper.toEntity(articleVO));
+			   //int amount = 1;
+			   model.addAttribute("articleVO", articleVO);
+			   //model.addAttribute("amount", amount);
+//	         if (panierVO != null) {
+//	   	      model.addAttribute("panierVO", panierVO);
+//	   	      model.addAttribute("articleVO", articleVO);
+//	         }
+//	      }else {
+//	    	  model.addAttribute("panierVO", new PanierVO());
 	      }
 	      return "panier/add";
-	   }
+	      }
 	 
 	   // POST: Save panier
 	   @RequestMapping(value = { "/panier/edit" }, method = RequestMethod.POST)
-	   public String save(Model model, //
-	         @ModelAttribute("panierVO") PanierVO panierVO, //
-	         final RedirectAttributes redirectAttributes) {
+	   public String save(Model model, 
+			   @ModelAttribute("articleVO") ArticleVO articleVO, 
+			   @ModelAttribute("amount") int amount,
+			   @AuthenticationPrincipal Authentication auth, 
+			   final RedirectAttributes redirectAttributes) {
+			   auth = SecurityContextHolder.getContext().getAuthentication();
+			   User user = userRepository.findByUserName(auth.getName());
 	      try {
-	    	  panierService.saveOrUpdate(panierVO);
+	    	  Map<ArticleVO, Integer> articleMap = new HashMap<>();
+	    	  articleMap.put(articleVO, amount);
+	    	  panierService.saveOrUpdate(articleMap, user.getId());
 	      } catch (Exception e) {
 	         System.err.println(e.getMessage());
 	      }
