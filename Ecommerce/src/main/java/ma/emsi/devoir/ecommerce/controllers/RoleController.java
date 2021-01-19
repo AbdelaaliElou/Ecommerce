@@ -41,7 +41,7 @@ public class RoleController {
 	
 	// GET: Show role.
 	   @RequestMapping(value = { "/role/edit" }, method = RequestMethod.GET)
-	   public String product(Model model, @RequestParam(value = "id", defaultValue = "") Long id) {
+	   public String eidt(Model model, @RequestParam(value = "id", defaultValue = "") Long id) {
 		   if (id != null) {
 	         RoleVO roleVO = roleService.findById(id);
 	         if (roleVO != null) {
@@ -55,7 +55,7 @@ public class RoleController {
 	 
 	   // POST: Save role
 	   @RequestMapping(value = { "/role/edit" }, method = RequestMethod.POST)
-	   public String productSave(Model model, //
+	   public String save(Model model, //
 	         @ModelAttribute("roleVO") RoleVO roleVO, //
 	         final RedirectAttributes redirectAttributes) {
 	      try {

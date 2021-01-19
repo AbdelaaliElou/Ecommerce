@@ -40,9 +40,9 @@ public class ArticleController {
 		return "redirect:/article";
 	}
 	
-	// GET: Show product.
+	// GET: Show article
 	   @RequestMapping(value = { "/article/edit" }, method = RequestMethod.GET)
-	   public String product(Model model, @RequestParam(value = "id", defaultValue = "") Long id) {
+	   public String edit(Model model, @RequestParam(value = "id", defaultValue = "") Long id) {
 		   if (id != null) {
 	         ArticleVO articleVO = iArticleService.findById(id);
 	         if (articleVO != null) {
@@ -54,9 +54,9 @@ public class ArticleController {
 	      return "article/add";
 	   }
 	 
-	   // POST: Save product
+	   // POST: Save article
 	   @RequestMapping(value = { "/article/edit" }, method = RequestMethod.POST)
-	   public String productSave(Model model, //
+	   public String save(Model model, //
 	         @ModelAttribute("articleVO") ArticleVO articleVO, //
 	         final RedirectAttributes redirectAttributes) {
 	      try {

@@ -41,7 +41,7 @@ public class PanierController {
 	
 	// GET: Show panier.
 	   @RequestMapping(value = { "/panier/edit" }, method = RequestMethod.GET)
-	   public String product(Model model, @RequestParam(value = "id", defaultValue = "") Long id) {
+	   public String edit(Model model, @RequestParam(value = "id", defaultValue = "") Long id) {
 		   if (id != null) {
 	         PanierVO panierVO = panierService.findById(id);
 	         if (panierVO != null) {
@@ -55,7 +55,7 @@ public class PanierController {
 	 
 	   // POST: Save panier
 	   @RequestMapping(value = { "/panier/edit" }, method = RequestMethod.POST)
-	   public String productSave(Model model, //
+	   public String save(Model model, //
 	         @ModelAttribute("panierVO") PanierVO panierVO, //
 	         final RedirectAttributes redirectAttributes) {
 	      try {

@@ -44,7 +44,7 @@ public class UserController {
 	
 	// GET: Show user.
 	   @RequestMapping(value = { "/user/edit" }, method = RequestMethod.GET)
-	   public String product(Model model, @RequestParam(value = "id", defaultValue = "") Long id) {
+	   public String edit(Model model, @RequestParam(value = "id", defaultValue = "") Long id) {
 		   if (id != null) {
 	         UserVO userVO = userService.findById(id);
 	         if (userVO != null) {
@@ -58,7 +58,7 @@ public class UserController {
 	 
 	   // POST: Save user
 	   @RequestMapping(value = { "/user/edit" }, method = RequestMethod.POST)
-	   public String productSave(Model model, //
+	   public String save(Model model, //
 	         @ModelAttribute("userVO") UserVO userVO, //
 	         final RedirectAttributes redirectAttributes) {
 	      try {
