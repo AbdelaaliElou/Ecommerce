@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico"/>
+
+    <title>Navbar Template for Bootstrap</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../static/css/bootstrap.css" rel="stylesheet" th:href="@{/css/bootstrap.css}"/>
+</head>
+<body>
+ <div th:replace="navbar/header :: header"></div>
+ 
+  <div class="row">
+  <div th:each="article : ${articles}" >
+  <div class="col-md-3 row" style="border:4px blue;border-style: solid;margin:25px;min-height: 160px">
+ <div class="col-sm-6">
+   <h5>Price  :<span th:text="${article.price}" ></span> </h5>
+
+  <h5>Designation :<span th:text="${article.designation}"></span>  </h5>
+
+  <h5>Reference :<span th:text="${article.reference}" > </span></h5>
+ </div>
+ <div class="col-sm-6"></div>
+<img th:src="|${article.img}|" alt="img"style="height: 50%;width: 50%" >
+<div><a th:href='@{/article/{id}(id=${article.id})}' class='btn'>Details</a></div>
+  </div>
+  </div>
+  </div>
+  
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="../static/js/bootstrap.js" th:href="@{/js/bootstrap.js}"></script>
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+</body>
+</html>

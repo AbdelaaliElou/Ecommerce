@@ -1,8 +1,8 @@
 
-
-java:S1488!"mImmediately return this expression instead of assigning it to the temporary variable "bCryptPasswordEncoder".(µ–Çµüÿÿÿÿ8ğîËÇñ.
+]	java:S125"<This block of commented-out lines of code should be removed.(³··œûÿÿÿÿ8ğîËÇñ.
 h
 java:S1854"FRemove this useless assignment to local variable "applicationContext".(ç¦¥üÿÿÿÿ8ğîËÇñ.
-]	java:S125"<This block of commented-out lines of code should be removed.(³··œûÿÿÿÿ8ğîËÇñ.
 Y
 java:S1481"7Remove this unused "applicationContext" local variable.(ç¦¥üÿÿÿÿ8ğîËÇñ.
+
+java:S1488!"mImmediately return this expression instead of assigning it to the temporary variable "bCryptPasswordEncoder".(µ–Çµüÿÿÿÿ8ğîËÇñ.
