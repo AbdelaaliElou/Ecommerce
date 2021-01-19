@@ -35,9 +35,6 @@ public class PanierServiceImpl implements IPanierService {
 	@Override
 	public Panier saveOrUpdate(PanierVO panierVo) {
 		Panier p = panierMapper.toEntity(panierVo);
-		User u = new User();
-		u.setId(1l);
-		p.setUser(u);
 		return panierRepository.save(p);
 	}
 

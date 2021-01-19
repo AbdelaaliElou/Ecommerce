@@ -1,14 +1,14 @@
-7777777777777777package ma.emsi.devoir.ecommerce.service.impl;
+package ma.emsi.devoir.ecommerce.service.impl;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.Base64;
 import java.util.List;
 import java.util.Optional;
 
-import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.FilenameUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import ma.emsi.devoir.ecommerce.dao.ArticleRepository;
@@ -28,14 +28,16 @@ public class ArticleServiceImpl implements IArticleService {
 
 	@Override
 	public Article saveOrUpdate(ArticleVO articleVO){
-			byte[] fileContent = null;
-			try {
-				fileContent = FileUtils.readFileToByteArray((File) articleVO.getFile());
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			articleVO.setImg(Base64.getEncoder().encodeToString(fileContent));
+			
+			if(articleVO.getFile() != null)
+				try {
+					String extension = FilenameUtils.getExtension(articleVO.getFile().getOriginalFilename());
+					articleVO.setImg("data:image/"+extension+";base64,"+Base64.getEncoder().encodeToString(articleVO.getFile().getBytes()));
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			
 		return articleRepository.save(articleMapper.toEntity(articleVO));
 	}
 
@@ -70,6 +72,12 @@ public class ArticleServiceImpl implements IArticleService {
 	public Page<ArticleVO> findByPriceRange(Double min, Double max) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public List<ArticleVO> findAll(int pageId, int size) {
+		// TODO Auto-generated method stub
+		return articleMapper.toDto(articleRepository.findAll(PageRequest.of(pageId, size)).getContent());
 	}
 
 }

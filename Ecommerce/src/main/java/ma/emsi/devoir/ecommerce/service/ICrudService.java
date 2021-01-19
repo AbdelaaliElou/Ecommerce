@@ -14,6 +14,8 @@ public interface ICrudService<T,E> {
 	 * */
 	List<T> findAll();
 	
+
+	
 	T findById(Long id);
 	
 	

@@ -3,13 +3,13 @@ package ma.emsi.devoir.ecommerce;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.Bean;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @SpringBootApplication
 public class EcommerceApplication {
-	
-
 	public static void main(String[] args) {
-	ApplicationContext	applicationContext = SpringApplication.run(EcommerceApplication.class, args);
+		ApplicationContext	applicationContext = SpringApplication.run(EcommerceApplication.class, args);
 		
 //	IPanierService iPanierService= applicationContext.getBean(IPanierService.class);
 //	Map<ArticleVO, Integer> mapArticle = new HashMap<ArticleVO, Integer>();
@@ -27,5 +27,10 @@ public class EcommerceApplication {
 //	 * +" Design: "+art.getDesignation()));
 //	 */
 	}
-
+	
+	@Bean
+	public BCryptPasswordEncoder passwordEncoder() {
+		BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
+		return bCryptPasswordEncoder;
+	}
 }
